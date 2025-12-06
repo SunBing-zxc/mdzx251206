@@ -1,18 +1,9 @@
 # cover.py
 from openai import OpenAI
-import os
-
-
-# 从环境变量中获取密钥：os.getenv("变量名")，变量名建议大写，比如DEEPSEEK_API_KEY
-DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
-
-# 判空：如果没获取到环境变量，提示错误（避免运行时崩溃）
-if not DEEPSEEK_API_KEY:
-    raise ValueError("请先设置 DEEPSEEK_API_KEY 环境变量！")
 
 # 创建DeepSeek客户端并导出
 client = OpenAI(
-    api_key=DEEPSEEK_API_KEY,
+    api_key='sk-a49001abe22b430fa441ef79316391b4',
     base_url="https://api.deepseek.com"
 )
 
@@ -41,3 +32,4 @@ def ask_ai_assistant(question, context=""):
         return response.choices[0].message.content
     except Exception as e:
         return f"出错了: {str(e)}。请检查您的API密钥是否正确或网络连接。"
+
